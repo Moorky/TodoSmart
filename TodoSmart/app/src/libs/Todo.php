@@ -1,6 +1,7 @@
 <?php
 
-class Todo {
+class Todo
+{
     private string $title;
     private string $description;
     private string $status;
@@ -10,8 +11,9 @@ class Todo {
     private string $dateUpdated;
     private string $category;
 
-    function  __constructor($title, $description, $status, $assignedTo, $createdBy,
-                            $dateCreated, $dateUpdated, $category) {
+    function __construct($title, $description, $status, $assignedTo, $createdBy,
+                           $dateCreated, $dateUpdated, $category)
+    {
         $this->title = $title;
         $this->description = $description;
         $this->status = $status;
@@ -22,59 +24,73 @@ class Todo {
         $this->category = $category;
     }
 
-    function getTitle() {
+    function getTitle()
+    {
         return $this->title;
     }
 
-    function setTitle($title) {
+    function setTitle($title)
+    {
         $this->title = $title;
     }
 
-    function getDescription() {
+    function getDescription()
+    {
         return $this->description;
     }
 
-    function setDescription($description) {
+    function setDescription($description)
+    {
         $this->description = $description;
     }
 
-    function getStatus() {
+    function getStatus()
+    {
         return $this->status;
     }
 
-    function setStatus($status) {
+    function setStatus($status)
+    {
         $this->status = $status;
     }
 
-    function getAssignedTo() {
+    function getAssignedTo()
+    {
         return $this->assignedTo;
     }
 
-    function setAssignedTo($assignedTo) {
+    function setAssignedTo($assignedTo)
+    {
         $this->assignedTo = $assignedTo;
     }
 
-    function getCreatedBy() {
+    function getCreatedBy()
+    {
         return $this->createdBy;
     }
 
-    function getDateCreated() {
+    function getDateCreated()
+    {
         return $this->dateCreated;
     }
 
-    function getDateUpdated() {
+    function getDateUpdated()
+    {
         return $this->dateUpdated;
     }
 
-    function setDateUpdated($dateUpdated) {
+    function setDateUpdated($dateUpdated)
+    {
         $this->dateUpdated = $dateUpdated;
     }
 
-    function getCategory() {
+    function getCategory()
+    {
         return $this->category;
     }
 
-    function setCategory($category) {
+    function setCategory($category)
+    {
         $this->category = $category;
     }
 }
