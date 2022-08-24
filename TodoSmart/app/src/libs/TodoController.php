@@ -17,13 +17,12 @@ class TodoController
         $this->todoList->setTodos(fetchAllTodos($sortKey));
     }
 
-    function saveAllTodosToDB()
-    {
-        saveAllTodos($this->todoList->getAllTodos());
-    }
-
     function createCategory($category)
     {
+
+    }
+
+    function createTodo() {
 
     }
 }

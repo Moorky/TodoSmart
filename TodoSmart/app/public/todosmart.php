@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . '/../src/bootstrap.php';
+require __DIR__ . '/../../src/bootstrap.php';
 require __DIR__ . '/../src/todosmart.php';
 
 require_login();
