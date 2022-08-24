@@ -12,9 +12,9 @@ class TodoController
         $this->todoList = new TodoList();
     }
 
-    function fetchAllTodosFromDB()
+    function fetchAllTodosFromDB($sortKey)
     {
-        $this->todoList->setTodos(fetchAllTodos());
+        $this->todoList->setTodos(fetchAllTodos($sortKey));
     }
 
     function saveAllTodosToDB()

@@ -1,15 +1,14 @@
 <?php
 
-function register_user(string $email, string $username, string $password, bool $is_admin = false): bool
+function register_user(string $username, string $password, bool $isAdmin = false): bool
 {
-    $sql = 'INSERT INTO users(username, email, password, is_admin) VALUES(:username, :email, :password, :is_admin)';
+    $sql = 'INSERT INTO users(username, password, isAdmin) VALUES(:username, :password, :isAdmin)';
 
     $statement = db()->prepare($sql);
 
     $statement->bindValue(':username', $username, PDO::PARAM_STR);
-    $statement->bindValue(':email', $email, PDO::PARAM_STR);
     $statement->bindValue(':password', password_hash($password, PASSWORD_BCRYPT), PDO::PARAM_STR);
-    $statement->bindValue(':is_admin', (int)$is_admin, PDO::PARAM_INT);
+    $statement->bindValue(':isAdmin', (int)$isAdmin, PDO::PARAM_INT);
 
 
     return $statement->execute();
@@ -57,7 +56,7 @@ function is_user_logged_in(): bool
 function require_login(): void
 {
     if (!is_user_logged_in()) {
-        redirect_to('login.php');
+        redirect_to('../../auth/login.php');
     }
 }
 
@@ -66,7 +65,7 @@ function logout(): void
     if (is_user_logged_in()) {
         unset($_SESSION['username'], $_SESSION['user_id']);
         session_destroy();
-        redirect_to('login.php');
+        redirect_to('../../auth/login.php');
     }
 }
 

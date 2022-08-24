@@ -29,13 +29,16 @@ class TodoList
             $dateCreated, $dateUpdated, $category);
     }
 
-    function getTodosByCategory($category)
+    function getTodosByCategory($category): array
     {
+        $todos = [];
 
-    }
+        foreach ($this->todos as &$todo) {
+            if ($todo->getCategory() === $category) {
+                $todos[] = $todo;
+            }
+        }
 
-    function sortTodosBy($param)
-    {
-
+        return $todos;
     }
 }
