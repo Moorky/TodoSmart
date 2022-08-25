@@ -16,6 +16,11 @@ class TodoList
         return $this->todos;
     }
 
+    function clearAllTodos()
+    {
+        $this->todos = [];
+    }
+
     function addTodo($id, $title, $description, $status, $assignedTo, $createdBy,
                      $dateCreated, $dateUpdated, $category): Todo
     {
