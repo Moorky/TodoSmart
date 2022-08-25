@@ -1,6 +1,6 @@
 <?php
 
-require_once 'databaseHandler.php';
+require_once '../databaseHandler.php';
 require_once 'TodoList.php';
 
 class TodoController
@@ -29,8 +29,22 @@ class TodoController
 
     private function getTodoValuesAsArray($todo): array
     {
-        return array($todo->getId(), $todo->getTitle(), $todo->getDescription(), $todo->getStatus(),
-            $todo->getAssignedTo(), $todo->getCreatedBy(), $todo->getDateCreated(),
-            $todo->getDateUpdated(), $todo->getCategory());
+        return array("id" => $todo->getId(), "title" => $todo->getTitle(), "description" => $todo->getDescription(),
+            "status" => $todo->getStatus(), "assignedTo" => $todo->getAssignedTo(),
+            "createdBy" => $todo->getCreatedBy(), "dateCreated" => $todo->getDateCreated(),
+            "dateUpdated" => $todo->getDateUpdated(), "category" => $todo->getCategory());
+    }
+
+    function getTodosByCategory($category): array
+    {
+        $todos = [];
+
+        foreach ($this->todoList->getAllTodos() as $todo) {
+            if ($todo->getCategory() === $category) {
+                $todos[] = $todo;
+            }
+        }
+
+        return $todos;
     }
 }

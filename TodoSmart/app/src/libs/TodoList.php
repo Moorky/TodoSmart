@@ -16,29 +16,40 @@ class TodoList
         return $this->todos;
     }
 
-    function setTodos($todos)
+    function addTodo($id, $title, $description, $status, $assignedTo, $createdBy,
+                     $dateCreated, $dateUpdated, $category): Todo
     {
-        // Write code in a way that takes the parameter and creates a new Todo Instance for each entry
-        $this->todos = $todos;
-    }
-
-    function addTodo($title, $description, $status, $assignedTo, $createdBy,
-                     $dateCreated, $dateUpdated, $category)
-    {
-        $this->todos[] = new Todo($title, $description, $status, $assignedTo, $createdBy,
+        $todo = new Todo($id, $title, $description, $status, $assignedTo, $createdBy,
             $dateCreated, $dateUpdated, $category);
+        $this->todos[] = $todo;
+        return $todo;
     }
 
-    function getTodosByCategory($category): array
+    function editTodo(int $id, $title, $description, $status, $assignedTo, $dateUpdated, $category): Todo
     {
-        $todos = [];
+        $editedTodo = null;
 
-        foreach ($this->todos as &$todo) {
-            if ($todo->getCategory() === $category) {
-                $todos[] = $todo;
+        foreach ($this->todos as $todo) {
+            if ($todo === $id) {
+                $todo->setTitle($title);
+                $todo->setDescription($description);
+                $todo->setStatus($status);
+                $todo->setAssignedTo($assignedTo);
+                $todo->setDateUpdated($dateUpdated);
+                $todo->setCategory($category);
+                $editedTodo = $todo;
             }
         }
 
-        return $todos;
+        return $editedTodo;
+    }
+
+    function deleteTodo(int $id)
+    {
+        foreach ($this->todos as $todoKey => $todo) {
+            if ($todo->getId() === $id) {
+                unset($this->todos[$todoKey]);
+            }
+        }
     }
 }

@@ -19,18 +19,19 @@ function todoDBHandler($values, $handler)
 {
     switch ($handler) {
         case "add":
+            array_shift($values);
             $sql = "INSERT INTO todos 
                     (title, description, status, assignedTo, createdBy, dateCreated, dateUpdated, category)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             break;
         case "edit":
+            $values[] = array_shift($values);
             $sql = "UPDATE todos 
                     SET title = ?, description = ?, status = ?, assignedTo = ?, createdBy = ?,
                         dateCreated = ?, dateUpdated = ?, category = ?
                     WHERE id = ?";
             break;
         case "delete":
-            $values = end($values);
             $sql = "DELETE FROM todos WHERE id = ?";
             break;
         default:
