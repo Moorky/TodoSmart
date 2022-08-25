@@ -2,6 +2,7 @@
 
 class Todo
 {
+    private int $id;
     private string $title;
     private string $description;
     private string $status;
@@ -11,9 +12,10 @@ class Todo
     private string $dateUpdated;
     private string $category;
 
-    function __construct($title, $description, $status, $assignedTo, $createdBy,
+    function __construct($id, $title, $description, $status, $assignedTo, $createdBy,
                            $dateCreated, $dateUpdated, $category)
     {
+        $this->id = $id;
         $this->title = $title;
         $this->description = $description;
         $this->status = $status;
@@ -22,6 +24,11 @@ class Todo
         $this->dateCreated = $dateCreated;
         $this->dateUpdated = $dateUpdated;
         $this->category = $category;
+    }
+
+    function getId()
+    {
+        return $this->id;
     }
 
     function getTitle()

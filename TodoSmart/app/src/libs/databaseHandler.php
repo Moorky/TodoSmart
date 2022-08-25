@@ -4,9 +4,9 @@ require_once __DIR__ . '/../../../src/bootstrap.php';
 
 function fetchAllTodos($sortKey): array
 {
-    $sql = 'SELECT title, description, status, assignedTo, createdBy, dateCreated, dateUpdated, category
+    $sql = "SELECT title, description, status, assignedTo, createdBy, dateCreated, dateUpdated, category
             FROM todos
-            ORDER BY :sortKey';
+            ORDER BY :sortKey";
 
     $statement = db()->prepare($sql);
     $statement->bindValue(':sortType', $sortKey, PDO::PARAM_STR);
@@ -15,22 +15,55 @@ function fetchAllTodos($sortKey): array
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function saveTodoToDB($todo)
+function todoDBHandler($values, $handler)
 {
+    switch ($handler) {
+        case "add":
+            $sql = "INSERT INTO todos 
+                    (title, description, status, assignedTo, createdBy, dateCreated, dateUpdated, category)
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            break;
+        case "edit":
+            $sql = "UPDATE todos 
+                    SET title = ?, description = ?, status = ?, assignedTo = ?, createdBy = ?,
+                        dateCreated = ?, dateUpdated = ?, category = ?
+                    WHERE id = ?";
+            break;
+        case "delete":
+            $values = end($values);
+            $sql = "DELETE FROM todos WHERE id = ?";
+            break;
+        default:
+            $sql = null;
+    }
 
+    $statement = db()->prepare($sql);
+    $statement->execute($values);
 }
 
-function editTodoInDB($todo)
+function fetchAllCategories(): array
 {
-    // check if todo exists, if yes then edit it
+    $sql = "SELECT categoryName FROM category";
+
+    $statement = db()->prepare($sql);
+    $statement->execute();
+
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function deleteTodoInDB($todo)
+function categoryDBHandler($categoryName, $handler)
 {
-    // check if todo exists, if yes then delete it
-}
+    switch ($handler) {
+        case "add":
+            $sql = "INSERT INTO category (categoryName) VALUES (?)";
+            break;
+        case "delete":
+            $sql = "DELETE FROM category WHERE categoryName = ?";
+            break;
+        default:
+            $sql = null;
+    }
 
-function checkIfTodoExists($todo)
-{
-
+    $statement = db()->prepare($sql);
+    $statement->execute($categoryName);
 }

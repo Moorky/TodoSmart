@@ -22,7 +22,15 @@ class TodoController
 
     }
 
-    function createTodo() {
+    function createTodo()
+    {
 
+    }
+
+    private function getTodoValuesAsArray($todo): array
+    {
+        return array($todo->getId(), $todo->getTitle(), $todo->getDescription(), $todo->getStatus(),
+            $todo->getAssignedTo(), $todo->getCreatedBy(), $todo->getDateCreated(),
+            $todo->getDateUpdated(), $todo->getCategory());
     }
 }
