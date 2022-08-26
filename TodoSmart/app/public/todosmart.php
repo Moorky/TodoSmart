@@ -8,6 +8,8 @@ require_login();
 
 <?php view('header', ['title' => 'Todo App']) ?>
 
-    <p>Welcome <?= current_user() ?> <a href="../../app/public/logout.php">Logout</a></p>
+    <div class="text">
+        <p>Welcome <?= current_user() ?> <a href="../../app/public/logout.php">Logout</a></p>
+    </div>
 
 <?php view('footer') ?>

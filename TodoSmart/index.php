@@ -1,12 +1,15 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Index</title>
-</head>
-<body>
+<?php
+require __DIR__ . '/src/bootstrap.php';
+?>
 
-</body>
-</html>
+<?php view('header', ['title' => 'Welcome to TodoSmart!']) ?>
+
+    <div class="text">
+        <h2>Todos?</h2>
+        <h3>Never been easier!</h3>
+        <p>Insert text from Laptop here.</p>
+        <a href="auth/register">Register</a>
+        <a href="auth/login">Login</a>
+    </div>
+
+<?php view('footer') ?>

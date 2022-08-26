@@ -8,7 +8,7 @@ if (is_user_logged_in()) {
 }
 ?>
 
-<?php view('header', ['title' => 'Login']) ?>
+<?php view('header', ['title' => 'Login - TodoSmart']) ?>
 
 <?php if (isset($errors['login'])) : ?>
     <div class="alert alert-error">
@@ -16,22 +16,28 @@ if (is_user_logged_in()) {
     </div>
 <?php endif ?>
 
-    <form action="login.php" method="post">
-        <h1>Login</h1>
-        <div>
-            <label for="username">Username:</label>
-            <input type="text" name="username" id="username" value="<?= $inputs['username'] ?? '' ?>">
-            <small><?= $errors['username'] ?? '' ?></small>
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" name="password" id="password">
-            <small><?= $errors['password'] ?? '' ?></small>
-        </div>
-        <section>
-            <button type="submit">Login</button>
-            <a href="register.php">Register</a>
-        </section>
-    </form>
+    <div class="text">
+        <form action="login.php" method="post">
+            <h3>Login</h3>
+            <div>
+                <p>
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username" value="<?= $inputs['username'] ?? '' ?>">
+                    <small><?= $errors['username'] ?? '' ?></small>
+                </p>
+            </div>
+            <div>
+                <p>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password">
+                    <small><?= $errors['password'] ?? '' ?></small>
+                </p>
+            </div>
+            <section>
+                <button type="submit">Submit</button>
+            </section>
+            <footer><p>No account yet? <a href="register">Register</a></p></footer>
+        </form>
+    </div>
 
 <?php view('footer') ?>

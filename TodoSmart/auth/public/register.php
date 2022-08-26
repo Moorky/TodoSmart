@@ -10,34 +10,42 @@ if (is_user_logged_in()) {
 
 <?php view('header', ['title' => 'Register']) ?>
 
-<form action="register.php" method="post">
-    <h1>Register</h1>
+<div class="text">
+    <form action="register.php" method="post">
+        <h3>Register</h3>
 
-    <div>
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" value="<?= $inputs['username'] ?? '' ?>"
-               class="<?= error_class($errors, 'username') ?>">
-        <small><?= $errors['username'] ?? '' ?></small>
-    </div>
+        <div>
+            <p>
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" value="<?= $inputs['username'] ?? '' ?>"
+                       class="<?= error_class($errors, 'username') ?>">
+                <small><?= $errors['username'] ?? '' ?></small>
+            </p>
+        </div>
 
-    <div>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" value="<?= $inputs['password'] ?? '' ?>"
-               class="<?= error_class($errors, 'password') ?>">
-        <small><?= $errors['password'] ?? '' ?></small>
-    </div>
+        <div>
+            <p>
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" value="<?= $inputs['password'] ?? '' ?>"
+                       class="<?= error_class($errors, 'password') ?>">
+                <small><?= $errors['password'] ?? '' ?></small>
+            </p>
+        </div>
 
-    <div>
-        <label for="password2">Password Again:</label>
-        <input type="password" name="password2" id="password2" value="<?= $inputs['password2'] ?? '' ?>"
-               class="<?= error_class($errors, 'password2') ?>">
-        <small><?= $errors['password2'] ?? '' ?></small>
-    </div>
+        <div>
+            <p>
+                <label for="password2">Password Again:</label>
+                <input type="password" name="password2" id="password2" value="<?= $inputs['password2'] ?? '' ?>"
+                       class="<?= error_class($errors, 'password2') ?>">
+                <small><?= $errors['password2'] ?? '' ?></small>
+            </p>
+        </div>
 
-    <button type="submit">Register</button>
+        <button type="submit">Submit</button>
 
-    <footer>Already a member? <a href="login.php">Login here</a></footer>
+        <footer><p>Already a member? <a href="login">Login here</a></p></footer>
 
-</form>
+    </form>
+</div>
 
 <?php view('footer') ?>
