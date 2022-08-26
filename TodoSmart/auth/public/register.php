@@ -8,15 +8,15 @@ if (is_user_logged_in()) {
 }
 ?>
 
-<?php view('header', ['title' => 'Register']) ?>
+<?php view('header', ['title' => 'Register - TodoSmart']) ?>
 
-<div class="text">
+<div class="content">
     <form action="register.php" method="post">
         <h3>Register</h3>
 
         <div>
             <p>
-                <label for="username">Username:</label>
+                <label for="username">Username:</label><br>
                 <input type="text" name="username" id="username" value="<?= $inputs['username'] ?? '' ?>"
                        class="<?= error_class($errors, 'username') ?>">
                 <small><?= $errors['username'] ?? '' ?></small>
@@ -25,7 +25,7 @@ if (is_user_logged_in()) {
 
         <div>
             <p>
-                <label for="password">Password:</label>
+                <label for="password">Password:</label><br>
                 <input type="password" name="password" id="password" value="<?= $inputs['password'] ?? '' ?>"
                        class="<?= error_class($errors, 'password') ?>">
                 <small><?= $errors['password'] ?? '' ?></small>
@@ -34,7 +34,7 @@ if (is_user_logged_in()) {
 
         <div>
             <p>
-                <label for="password2">Password Again:</label>
+                <label for="password2">Password Again:</label><br>
                 <input type="password" name="password2" id="password2" value="<?= $inputs['password2'] ?? '' ?>"
                        class="<?= error_class($errors, 'password2') ?>">
                 <small><?= $errors['password2'] ?? '' ?></small>

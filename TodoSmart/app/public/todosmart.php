@@ -6,10 +6,20 @@ require __DIR__ . '/../src/todosmart.php';
 require_login();
 ?>
 
-<?php view('header', ['title' => 'Todo App']) ?>
+<?php view('header', ['title' => 'App - TodoSmart']) ?>
 
-    <div class="text">
-        <p>Welcome <?= current_user() ?> <a href="../../app/public/logout.php">Logout</a></p>
+    <header>
+        <div class="content welcomeUser">
+            <p>
+                Welcome <?= current_user() ?><br>
+                <button onclick="location.href = '../../app/public/logout.php'">Logout</button>
+            </p>
+        </div>
+    </header>
+
+    <div class="content">
+
+        AAAAaaaa
     </div>
 
 <?php view('footer') ?>
