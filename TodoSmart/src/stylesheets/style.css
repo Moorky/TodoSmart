@@ -25,6 +25,10 @@ header .logo {
     cursor: pointer;
 }
 
+li {
+    display: inline;
+}
+
 .showcase {
     position: absolute;
     right: 0;
@@ -110,12 +114,14 @@ header .logo {
     letter-spacing: 3px;
 }
 
+
+
 button {
     display: inline-block;
     outline: 0;
     text-align: center;
     cursor: pointer;
-    padding: 17px 30px;
+    padding: 12px 22px;
     border: 0;
     color: #fff;
     font-size: 17.5px;
@@ -139,6 +145,16 @@ button:hover {
     position: fixed;
     top: 2px;
     right: 10px;
+}
+
+.todoFrame {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    min-height: 100vh;
+    padding-top: 150px;
+    z-index: 100;
 }
 
 @media (max-width: 991px) {

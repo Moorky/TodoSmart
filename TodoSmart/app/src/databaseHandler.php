@@ -4,7 +4,7 @@ require_once __DIR__ . '/../../src/bootstrap.php';
 
 function fetchAllTodos($sortKey): array
 {
-    $sql = "SELECT title, description, status, assignedTo, createdBy, dateCreated, dateUpdated, category
+    $sql = "SELECT id, title, description, status, assignedTo, createdBy, dateCreated, dateUpdated, category
             FROM todos
             ORDER BY :sortKey";
 
