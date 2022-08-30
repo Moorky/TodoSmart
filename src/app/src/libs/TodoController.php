@@ -1,6 +1,6 @@
 <?php
 
-require_once '../databaseHandler.php';
+require_once __DIR__ . '/../databaseHandler.php';
 require_once 'TodoList.php';
 
 class TodoController
@@ -12,6 +12,16 @@ class TodoController
     {
         $this->todoList = new TodoList();
         $this->categoryList = [];
+    }
+
+    function getTodoList(): object
+    {
+        return $this->todoList;
+    }
+
+    function getCategoryList(): array
+    {
+        return $this->categoryList;
     }
 
     function fetchAllElementsFromDB($sortKey)

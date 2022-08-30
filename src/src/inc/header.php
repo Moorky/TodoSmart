@@ -12,4 +12,13 @@
     <section class="showcase">
         <header>
             <a href="/" style="text-decoration: none"><h2 class="logo">TodoSmart</h2></a>
+
+            <?php if (is_user_logged_in()): ?>
+                <div class="content welcomeUser">
+                    <p>
+                        Welcome <?= current_user() ?><br>
+                        <button onclick="location.href = '../../app/public/logout.php'">Logout</button>
+                    </p>
+                </div>
+            <?php endif; ?>
         </header>
