@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../src/stylesheets/style.css">
+    <link rel="stylesheet" href="../../stylesheets/style.css">
     <title><?= $title ?? 'Home' ?></title>
 </head>
 <body>
@@ -11,6 +11,6 @@
     <?php flash() ?>
     <section class="showcase">
         <header>
-            <a href="../../" style="text-decoration: none"><h2 class="logo">TodoSmart</h2></a>
+            <a href="/" style="text-decoration: none"><h2 class="logo">TodoSmart</h2></a>
         </header>
         <div class="overlay"></div>

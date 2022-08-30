@@ -4,7 +4,7 @@ require __DIR__ . '/../../src/bootstrap.php';
 require __DIR__ . '/../src/login.php';
 
 if (is_user_logged_in()) {
-    redirect_to('../../app/todosmart.php');
+    redirect_to('/app/public/todosmart.php');
 }
 ?>
 
@@ -36,7 +36,7 @@ if (is_user_logged_in()) {
             <section>
                 <button type="submit">Submit</button>
             </section>
-            <footer><p>No account yet? <a href="register">Register</a></p></footer>
+            <footer><p>No account yet? <a href="register.php">Register</a></p></footer>
         </form>
     </div>
 

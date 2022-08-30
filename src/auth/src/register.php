@@ -6,9 +6,9 @@ $inputs = [];
 if (is_post_request()) {
 
     $fields = [
-        'username' => 'string | required | alphanumeric | between: 3, 25 | unique: users, username',
-        'password' => 'string | required | secure',
-        'password2' => 'string | required | same: password',
+        'username' => 'string|required|alphanumeric|between:3,25|unique:users,username',
+        'password' => 'string|required|secure',
+        'password2' => 'string|required|same:password',
     ];
 
     // custom messages

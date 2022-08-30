@@ -7,8 +7,8 @@ if (is_post_request()) {
 
     // sanitize & validate user inputs
     [$inputs, $errors] = filter($_POST, [
-        'username' => 'string | required',
-        'password' => 'string | required'
+        'username' => 'string|required',
+        'password' => 'string|required'
     ]);
 
     // if validation error
@@ -31,7 +31,7 @@ if (is_post_request()) {
     }
 
     // login successfully
-    redirect_to('../../app/todosmart.php');
+    redirect_to('/app/public/todosmart.php');
 
 } else if (is_get_request()) {
     [$errors, $inputs] = session_flash('errors', 'inputs');
