@@ -13,4 +13,3 @@
         <header>
             <a href="/" style="text-decoration: none"><h2 class="logo">TodoSmart</h2></a>
         </header>
-        <div class="overlay"></div>

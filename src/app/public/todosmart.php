@@ -8,8 +8,6 @@ require_login();
 
 <?php view('header', ['title' => 'App - TodoSmart']) ?>
 
-    </section>
-
     <header>
         <div class="content welcomeUser">
             <p>
