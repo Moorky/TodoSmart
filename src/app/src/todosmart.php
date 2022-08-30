@@ -20,9 +20,22 @@ function createTodoElements()
     foreach ($todoList->getAllTodos() as $todo) {
         $title = $todo->getTitle();
         $description = $todo->getDescription();
+        $status = $todo->getStatus();
+        $assignedTo = $todo->getAssignedTo();
+        $createdBy = $todo->getCreatedBy();
+        $dateCreated = $todo->getDateCreated();
+        $dateUpdated = $todo->getDateUpdated();
+        $category = $todo->getCategory();
+
         echo "<li>
                 Title: $title <br>
-                Description: $description
+                Description: $description <br>
+                Status: $status <br>
+                Assigned To: $assignedTo <br>
+                Created By: $createdBy <br>
+                Date Created: $dateCreated <br>
+                Date Updated: $dateUpdated <br>
+                Category: $category
             </li>";
     }
 }

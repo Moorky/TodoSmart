@@ -41,15 +41,16 @@ require_login();
             <div>
                 <ul>
                     <li>
-                        <!-- Trigger/Open The Modal -->
-                        <button id="myBtn">Create Category</button>
+                        <button id="createCategoryBtn">Create Category</button>
                     </li>
                     <li>
-                        <!-- CREATE TODO -->
+                        <button id="createTodoBtn">Create Todo</button>
                     </li>
                 </ul>
             </div>
         </div>
+
+        <br>
 
         <div class="todos">
             <ul id="todos">
@@ -58,14 +59,12 @@ require_login();
         </div>
     </div>
 
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-
-        <!-- Modal content -->
+    <!-- Create Category Modal -->
+    <div id="createCategory" class="modal">
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close">&times;</span>
-                <h2>Modal Header</h2>
+                <h2>Create Category</h2>
             </div>
             <div class="modal-body">
                 <p>Some text in the Modal Body</p>
@@ -75,7 +74,23 @@ require_login();
                 <h3>Modal Footer</h3>
             </div>
         </div>
+    </div>
 
+    <!-- Create Category Modal -->
+    <div id="createTodo" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Create Todo</h2>
+            </div>
+            <div class="modal-body">
+                <p>Some text in the Modal Body</p>
+                <p>Some other text...</p>
+            </div>
+            <div class="modal-footer">
+                <h3>Modal Footer</h3>
+            </div>
+        </div>
     </div>
 
     <script type="text/javascript" src="modal.js"></script>

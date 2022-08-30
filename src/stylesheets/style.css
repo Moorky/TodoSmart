@@ -5,6 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
+    user-select: none;
 }
 
 header {
@@ -25,10 +26,6 @@ header .logo {
     cursor: pointer;
 }
 
-.menu li {
-    display: inline;
-}
-
 .showcase {
     position: absolute;
     right: 0;
@@ -38,7 +35,7 @@ header .logo {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #8f8f8f;
+    background: #111;
     transition: 0.5s;
     z-index: 2;
 }
@@ -135,16 +132,6 @@ button:hover {
     position: fixed;
     top: 2px;
     right: 10px;
-}
-
-.todoFrame {
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    text-align: center;
-    min-height: 100vh;
-    padding-top: 150px;
-    z-index: 100;
 }
 
 @media (max-width: 991px) {
