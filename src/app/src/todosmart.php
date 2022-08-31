@@ -1,15 +1,15 @@
 <?php
 
+require_once __DIR__ . '/../../src/bootstrap.php';
 require_once __DIR__ . '/databaseHandler.php';
 require_once 'libs/TodoController.php';
 
 $controller = new TodoController();
-prepareController();
 
 function prepareController()
 {
     global $controller;
-    $controller->fetchAllElementsFromDB("id");
+    $controller->fetchAllElementsFromDB($_SESSION["sortKey"] ?? "id");
 }
 
 function createTodoElements()
@@ -50,5 +50,13 @@ function createCategoryElements()
     foreach ($categoryList as $category) {
         $categoryName = $category["categoryName"];
         echo "<option value='$categoryName'>$categoryName</option>";
+    }
+}
+
+function createUserElements()
+{
+    foreach (getAllUsernames() as $user) {
+        $username = $user["username"];
+        echo "<option value='$username'>$username</option>";
     }
 }

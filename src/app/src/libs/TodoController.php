@@ -88,17 +88,4 @@ class TodoController
             "createdBy" => $todo->getCreatedBy(), "dateCreated" => $todo->getDateCreated(),
             "dateUpdated" => $todo->getDateUpdated(), "category" => $todo->getCategory());
     }
-
-    function getTodosByCategory($category): array
-    {
-        $todos = [];
-
-        foreach ($this->todoList->getAllTodos() as $todo) {
-            if ($todo->getCategory() === $category) {
-                $todos[] = $todo;
-            }
-        }
-
-        return $todos;
-    }
 }

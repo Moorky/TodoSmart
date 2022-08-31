@@ -77,3 +77,14 @@ function current_user()
     }
     return null;
 }
+
+function getAllUsernames()
+{
+    $sql = 'SELECT username
+            FROM users';
+
+    $statement = db()->prepare($sql);
+    $statement->execute();
+
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
+}

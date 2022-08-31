@@ -6,10 +6,9 @@ function fetchAllTodos($sortKey): array
 {
     $sql = "SELECT id, title, description, status, assignedTo, createdBy, dateCreated, dateUpdated, category
             FROM todos
-            ORDER BY :sortKey";
+            ORDER BY $sortKey";
 
     $statement = db()->prepare($sql);
-    $statement->bindValue(':sortKey', $sortKey, PDO::PARAM_STR);
     $statement->execute();
 
     return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -19,11 +18,12 @@ function todoDBHandler($values, $key)
 {
     switch ($key) {
         case "add":
-            array_shift($values);
+            if (array_key_exists("id", $values)) {
+                array_shift($values);
+            }
             $sql = "INSERT INTO todos 
                     (title, description, status, assignedTo, createdBy, dateCreated, dateUpdated, category)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-                    SELECT LAST_INSERT_ID()";
+                    VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
             break;
         case "edit":
             $id = array_shift($values);
@@ -39,12 +39,11 @@ function todoDBHandler($values, $key)
         default:
             $sql = null;
     }
-
     $statement = db()->prepare($sql);
-    $statement->execute($values);
+    $statement->execute(array_values($values));
 
     if ($key === "add") {
-        return $statement->fetch(PDO::FETCH_NUM);
+        return db()->lastInsertId("todos");
     }
 }
 
@@ -72,5 +71,5 @@ function categoryDBHandler($categoryName, $key)
     }
 
     $statement = db()->prepare($sql);
-    $statement->execute($categoryName);
+    $statement->execute([$categoryName]);
 }

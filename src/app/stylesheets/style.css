@@ -20,6 +20,7 @@ li {
 
 .todos li {
     border: solid 3px white;
+    user-select: text;
 }
 
 /* The Modal (background) */
