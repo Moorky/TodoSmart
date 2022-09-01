@@ -1,10 +1,10 @@
 <?php
 
-require_once __DIR__ . '/../../src/bootstrap.php';
+require_once __DIR__ . '/../../../src/bootstrap.php';
 
 function fetchAllTodos($sortKey): array
 {
-    $sql = "SELECT id, title, description, status, assignedTo, createdBy, dateCreated, dateUpdated, category
+    $sql = "SELECT *
             FROM todos
             ORDER BY $sortKey";
 
@@ -57,19 +57,28 @@ function fetchAllCategories(): array
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function categoryDBHandler($categoryName, $key)
+function categoryDBHandler($categoryName, $key): void
 {
-    switch ($key) {
-        case "add":
-            $sql = "INSERT INTO category (categoryName) VALUES (?)";
-            break;
-        case "delete":
-            $sql = "DELETE FROM category WHERE categoryName = ?";
-            break;
-        default:
-            $sql = null;
-    }
+    $sql = match ($key) {
+        "add" => "INSERT INTO category (categoryName) VALUES (?)",
+        "delete" => "DELETE FROM category WHERE categoryName = ?",
+        default => null,
+    };
 
     $statement = db()->prepare($sql);
     $statement->execute([$categoryName]);
+}
+
+function fetchAllTodosByCategory($sortKey, $categoryName): array
+{
+    $sql = "SELECT *
+            FROM todos
+            WHERE category = :categoryName
+            ORDER BY $sortKey";
+
+    $statement = db()->prepare($sql);
+    $statement->bindValue(":categoryName", $categoryName);
+    $statement->execute();
+
+    return $statement->fetchAll(PDO::FETCH_ASSOC);
 }

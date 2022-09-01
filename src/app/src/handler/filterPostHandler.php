@@ -10,6 +10,7 @@ if (is_post_request() && isset($_POST['filterSubmit'])) {
     [$inputs, $errors] = filter($_POST, $fields, $messages);
 
     $_SESSION["sortKey"] = $inputs["sort"];
+    $_SESSION["categoryName"] = $inputs["category"];
 
     global $controller;
 

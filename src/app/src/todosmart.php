@@ -1,18 +1,25 @@
 <?php
 
 require_once __DIR__ . '/../../src/bootstrap.php';
-require_once __DIR__ . '/databaseHandler.php';
+require_once __DIR__ . '/handler/databaseHandler.php';
 require_once 'libs/TodoController.php';
 
 $controller = new TodoController();
 
-function prepareController()
+function prepareController(): void
 {
     global $controller;
-    $controller->fetchAllElementsFromDB($_SESSION["sortKey"] ?? "id");
+
+    if (isset($_SESSION["categoryName"]) && $_SESSION["categoryName"] !== "none") {
+        $controller->fetchAllElementsFromDBByCategory($_SESSION["sortKey"] ?? "id", $_SESSION["categoryName"]);
+
+    } else {
+        $controller->fetchAllElementsFromDB($_SESSION["sortKey"] ?? "id");
+
+    }
 }
 
-function createTodoElements()
+function createTodoElements(): void
 {
     global $controller;
     $todoList = $controller->getTodoList();
@@ -40,7 +47,7 @@ function createTodoElements()
     }
 }
 
-function createCategoryElements()
+function createCategoryElements(): void
 {
     global $controller;
     $categoryList = $controller->getCategoryList();
@@ -53,7 +60,7 @@ function createCategoryElements()
     }
 }
 
-function createUserElements()
+function createUserElements(): void
 {
     foreach (getAllUsernames() as $user) {
         $username = $user["username"];

@@ -2,9 +2,9 @@
 
 require_once __DIR__ . '/../../src/bootstrap.php';
 require_once __DIR__ . '/../src/todosmart.php';
-require_once __DIR__ . '/../src/categoryPostHandler.php';
-require_once __DIR__ . '/../src/todoPostHandler.php';
-require_once __DIR__ . '/../src/filterPostHandler.php';
+require_once __DIR__ . '/../src/handler/categoryPostHandler.php';
+require_once __DIR__ . '/../src/handler/todoPostHandler.php';
+require_once __DIR__ . '/../src/handler/filterPostHandler.php';
 
 require_login();
 

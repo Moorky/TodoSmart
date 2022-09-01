@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . '/../databaseHandler.php';
+require_once __DIR__ . '/../handler/databaseHandler.php';
 require_once 'TodoList.php';
 
 class TodoController
@@ -24,13 +24,30 @@ class TodoController
         return $this->categoryList;
     }
 
-    function fetchAllElementsFromDB($sortKey)
+    function fetchAllElementsFromDB($sortKey): void
     {
         $this->fetchAllCategoriesFromDB();
         $this->fetchAllTodosFromDB($sortKey);
     }
 
-    private function fetchAllCategoriesFromDB()
+    function fetchAllElementsFromDBByCategory($sortKey, $categoryName): void
+    {
+        $this->fetchAllCategoriesFromDB();
+        $this->fetchAllTodosFromDBByCategory($sortKey, $categoryName);
+    }
+
+    private function fetchAllTodosFromDBByCategory($sortKey, $categoryName): void
+    {
+        $todos = fetchAllTodosByCategory($sortKey, $categoryName);
+        $this->todoList->clearAllTodos();
+
+        foreach ($todos as $todo) {
+            $this->todoList->addTodo($todo["id"], $todo["title"], $todo["description"], $todo["status"],
+                $todo["assignedTo"], $todo["createdBy"], $todo["dateCreated"], $todo["dateUpdated"], $todo["category"]);
+        }
+    }
+
+    private function fetchAllCategoriesFromDB(): void
     {
         $this->categoryList = fetchAllCategories();
     }
