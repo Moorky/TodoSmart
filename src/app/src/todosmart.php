@@ -37,10 +37,10 @@ function createTodoElements(): void
 
         echo "<li>
                 <form action='todosmart.php' method='post'>
-                    <button type='submit' name='todoDelete' id='todoDelete' value='$id'
+                    <button type='submit' name='deleteTodoSubmit' value='$id'
                         style='float: right'>&times;</button>
                 </form>
-                <button style='float: right'>...</button>
+                <button name='editTodoBtn' value='$id' style='float: right'>...</button>
 
                 Title: $title <br>
                 Description: $description <br>
@@ -50,6 +50,12 @@ function createTodoElements(): void
                 Date Created: $dateCreated <br>
                 Date Updated: $dateUpdated <br>
                 Category: $category
+                
+                <input type='hidden' id='$id,title' value='$title'>
+                <input type='hidden' id='$id,description' value='$description'>
+                <input type='hidden' id='$id,status' value='$status'>
+                <input type='hidden' id='$id,assignedTo' value='$assignedTo'>
+                <input type='hidden' id='$id,category' value='$category'>
             </li>";
     }
 }

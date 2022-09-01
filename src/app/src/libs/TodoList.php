@@ -16,7 +16,7 @@ class TodoList
         return $this->todos;
     }
 
-    function clearAllTodos()
+    function clearAllTodos(): void
     {
         $this->todos = [];
     }
@@ -28,33 +28,5 @@ class TodoList
             $dateCreated, $dateUpdated, $category);
         $this->todos[] = $todo;
         return $todo;
-    }
-
-    function editTodo(int $id, $title, $description, $status, $assignedTo, $dateUpdated, $category): Todo
-    {
-        $editedTodo = null;
-
-        foreach ($this->todos as $todo) {
-            if ($todo === $id) {
-                $todo->setTitle($title);
-                $todo->setDescription($description);
-                $todo->setStatus($status);
-                $todo->setAssignedTo($assignedTo);
-                $todo->setDateUpdated($dateUpdated);
-                $todo->setCategory($category);
-                $editedTodo = $todo;
-            }
-        }
-
-        return $editedTodo;
-    }
-
-    function deleteTodo(int $id)
-    {
-        foreach ($this->todos as $todoKey => $todo) {
-            if ($todo->getId() === $id) {
-                unset($this->todos[$todoKey]);
-            }
-        }
     }
 }

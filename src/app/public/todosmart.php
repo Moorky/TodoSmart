@@ -5,7 +5,6 @@ require_once __DIR__ . '/../src/todosmart.php';
 require_once __DIR__ . '/../src/handler/categoryPostHandler.php';
 require_once __DIR__ . '/../src/handler/todoPostHandler.php';
 require_once __DIR__ . '/../src/handler/filterPostHandler.php';
-require_once __DIR__ . '/../src/handler/todoHandler.php';
 
 require_login();
 
@@ -18,7 +17,7 @@ prepareController();
     <div class="todoFrame">
 
         <!-- Menu -->
-        <?php include_once __DIR__ . '/../src/todoMenu.php'; ?>
+        <?php include_once __DIR__ . '/../src/inc/todoMenu.php'; ?>
 
         <br>
 
@@ -32,7 +31,7 @@ prepareController();
 
 
     <!-- Modals -->
-    <?php include_once __DIR__ . '/../src/modals.php'; ?>
-    <script type="text/javascript" src="modal.js"></script>
+    <?php include_once __DIR__ . '/../src/inc/modalElements.php'; ?>
+    <script type="text/javascript" src="javascript/modal.js"></script>
 
 <?php view('footer') ?>

@@ -29,8 +29,7 @@ function todoDBHandler($values, $key)
             $id = array_shift($values);
             $values[] = $id;
             $sql = "UPDATE todos 
-                    SET title = ?, description = ?, status = ?, assignedTo = ?, createdBy = ?,
-                        dateCreated = ?, dateUpdated = ?, category = ?
+                    SET title = ?, description = ?, status = ?, assignedTo = ?, dateUpdated = ?, category = ?
                     WHERE id = ?";
             break;
         case "delete":

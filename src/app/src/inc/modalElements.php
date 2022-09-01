@@ -24,6 +24,32 @@
 
 
 
+<!-- Delete Category Modal -->
+<div id="deleteCategory" class="modal">
+    <form action="todosmart.php" method="post">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Delete Category</h2>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <label for="deleteCategorySelection">Category:</label>
+                    <select name="category" id="deleteCategorySelection">
+                        <?php createCategoryElements(); ?>
+                    </select>
+                </p>
+            </div>
+            <br>
+            <div class="modal-footer">
+                <button type="submit" name="categoryDeleteSubmit" id="categoryDeleteSubmit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
 <!-- Create To-Do Modal -->
 <div id="createTodo" class="modal">
     <form action="todosmart.php" method="post">
@@ -77,25 +103,54 @@
 
 
 
-<!-- Delete Category Modal -->
-<div id="deleteCategory" class="modal">
+<!-- Edit To-Do Modal -->
+<div id="editTodo" class="modal">
     <form action="todosmart.php" method="post">
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close">&times;</span>
-                <h2>Delete Category</h2>
+                <h2>Edit Todo</h2>
             </div>
             <div class="modal-body">
                 <p>
-                    <label for="deleteCategorySelection">Category:</label>
-                    <select name="category" id="deleteCategorySelection">
+                    <label for="editTodoTitle">Title:</label><br>
+                    <input type="text" name="title" id="editTodoTitle"
+                           class="<?= error_class($errors, 'title') ?>">
+                    <small><?= $errors['title'] ?? '' ?></small>
+                </p>
+                <p>
+                    <label for="editTodoDescription">Description:</label><br>
+                    <input type="text" name="description" id="editTodoDescription" autocomplete="off"
+                           class="<?= error_class($errors, 'description') ?>">
+                    <small><?= $errors['description'] ?? '' ?></small>
+                </p>
+                <p>
+                    <label for="editTodoStatus">Status:</label>
+                    <select name="status" id="editTodoStatus">
+                        <option value="Open">Open</option>
+                        <option value="In Progress">In Progress</option>
+                        <option value="Done">Done</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="editTodoAssignedTo">Assigned To:</label>
+                    <select name="assignedTo" id="editTodoAssignedTo">
+                        <?php createUserElements() ?>
+                    </select>
+                </p>
+                <p>
+                    <label for="editTodoCategory">Category:</label>
+                    <select name="category" id="editTodoCategory">
                         <?php createCategoryElements(); ?>
                     </select>
+                </p>
+                <p>
+                    <input type="hidden" name="id" id="editTodoId">
                 </p>
             </div>
             <br>
             <div class="modal-footer">
-                <button type="submit" name="categoryDeleteSubmit" id="categoryDeleteSubmit">Submit</button>
+                <button type="submit" name="editTodoSubmit" id="editTodoSubmit">Submit</button>
             </div>
         </div>
     </form>
