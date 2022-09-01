@@ -5,6 +5,7 @@ require_once __DIR__ . '/../src/todosmart.php';
 require_once __DIR__ . '/../src/handler/categoryPostHandler.php';
 require_once __DIR__ . '/../src/handler/todoPostHandler.php';
 require_once __DIR__ . '/../src/handler/filterPostHandler.php';
+require_once __DIR__ . '/../src/handler/todoHandler.php';
 
 require_login();
 

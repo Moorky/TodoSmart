@@ -2,7 +2,7 @@
 
 require_once __DIR__ . '/../../src/bootstrap.php';
 require_once __DIR__ . '/handler/databaseHandler.php';
-require_once 'libs/TodoController.php';
+require_once __DIR__ . '/libs/TodoController.php';
 
 $controller = new TodoController();
 
@@ -25,6 +25,7 @@ function createTodoElements(): void
     $todoList = $controller->getTodoList();
 
     foreach ($todoList->getAllTodos() as $todo) {
+        $id = $todo->getId();
         $title = $todo->getTitle();
         $description = $todo->getDescription();
         $status = $todo->getStatus();
@@ -35,6 +36,12 @@ function createTodoElements(): void
         $category = $todo->getCategory();
 
         echo "<li>
+                <form action='todosmart.php' method='post'>
+                    <button type='submit' name='todoDelete' id='todoDelete' value='$id'
+                        style='float: right'>&times;</button>
+                </form>
+                <button style='float: right'>...</button>
+
                 Title: $title <br>
                 Description: $description <br>
                 Status: $status <br>

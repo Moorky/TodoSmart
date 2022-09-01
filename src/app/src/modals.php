@@ -16,11 +16,13 @@
             </div>
             <br>
             <div class="modal-footer">
-                <button type="submit" name="categorySubmit" id="categorySubmit">Submit</button>
+                <button type="submit" name="categoryCreateSubmit" id="categoryCreateSubmit">Submit</button>
             </div>
         </div>
     </form>
 </div>
+
+
 
 <!-- Create To-Do Modal -->
 <div id="createTodo" class="modal">
@@ -68,6 +70,32 @@
             <br>
             <div class="modal-footer">
                 <button type="submit" name="createTodoSubmit" id="createTodoSubmit">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+<!-- Delete Category Modal -->
+<div id="deleteCategory" class="modal">
+    <form action="todosmart.php" method="post">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Delete Category</h2>
+            </div>
+            <div class="modal-body">
+                <p>
+                    <label for="deleteCategorySelection">Category:</label>
+                    <select name="category" id="deleteCategorySelection">
+                        <?php createCategoryElements(); ?>
+                    </select>
+                </p>
+            </div>
+            <br>
+            <div class="modal-footer">
+                <button type="submit" name="categoryDeleteSubmit" id="categoryDeleteSubmit">Submit</button>
             </div>
         </div>
     </form>

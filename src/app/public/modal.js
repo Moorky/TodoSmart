@@ -1,4 +1,4 @@
-const modals = ["createCategory", "createTodo"];
+const modals = ["createCategory", "createTodo", "deleteCategory"];
 
 modals.forEach((e, i) => {
     const modal = document.getElementById(e);

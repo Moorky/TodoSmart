@@ -32,6 +32,9 @@
                 <button id="createCategoryBtn">Create Category</button>
             </li>
             <li>
+                <button id="deleteCategoryBtn">Delete Category</button>
+            </li>
+            <li>
                 <button id="createTodoBtn">Create Todo</button>
             </li>
         </ul>

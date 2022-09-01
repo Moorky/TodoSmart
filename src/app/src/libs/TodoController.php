@@ -52,21 +52,18 @@ class TodoController
         $this->categoryList = fetchAllCategories();
     }
 
-    function createCategory($categoryName)
+    function createCategory($categoryName): void
     {
         $this->categoryList[] = $categoryName;
         categoryDBHandler($categoryName, "add");
     }
 
-    function deleteCategory($categoryName)
+    function deleteCategory($categoryName): void
     {
-        if (($key = array_search($categoryName, $this->categoryList)) !== false) {
-            unset($this->categoryList[$key]);
-            categoryDBHandler($categoryName, "delete");
-        }
+        categoryDBHandler($categoryName, "delete");
     }
 
-    private function fetchAllTodosFromDB($sortKey)
+    private function fetchAllTodosFromDB($sortKey): void
     {
         $todos = fetchAllTodos($sortKey);
         $this->todoList->clearAllTodos();
@@ -77,7 +74,7 @@ class TodoController
         }
     }
 
-    function createTodo($values)
+    function createTodo($values): void
     {
         $todoId = todoDBHandler($values, "add");
         $this->todoList->addTodo($todoId, $values["title"], $values["description"], $values["status"],
@@ -85,16 +82,16 @@ class TodoController
             $values["dateUpdated"], $values["category"]);
     }
 
-    function editTodo($values)
+    function editTodo($values): void
     {
         todoDBHandler($values, "edit");
         $this->todoList->editTodo($values["id"], $values["title"], $values["description"], $values["status"],
             $values["assignedTo"], $values["dateUpdated"], $values["category"]);
     }
 
-    function deleteTodo($id)
+    function deleteTodo($id): void
     {
-        todoDBHandler($id, "delete");
+        todoDBHandler([$id], "delete");
         $this->todoList->deleteTodo($id);
     }
 
