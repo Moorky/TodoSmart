@@ -41,13 +41,16 @@ function createTodoElements(): void
                         style='float: right'>&times;</button>
                 </form>
                 <button name='editTodoBtn' value='$id' style='float: right'>...</button>
+                
+                <h4 style='float: right;padding-right: 5px;text-align: right'>
+                    <small>To $assignedTo | From $createdBy</small>
+                    <br>
+                    $status
+                </h4>
 
                 <h3>$title</h3>
-                <p>$description</p>
-                Status: $status <br>
-                Assigned To: $assignedTo <br>
-                Created By: $createdBy <br>
-                Category: $category
+                <p style='padding-left: 15px'>$description</p>
+                <small style='border: 10px white'><b>$category</b></small>
                 
                 <small style='float: right'>$dateCreated | $dateUpdated</small>
                 

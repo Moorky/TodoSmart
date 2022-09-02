@@ -6,7 +6,7 @@
     min-height: 100vh;
     padding-top: 150px;
     z-index: 100;
-    width: 100%;
+    width: auto;
 }
 
 li {
@@ -19,6 +19,7 @@ li {
 }
 
 .todos li {
+    margin: auto;
     border: solid 3px white;
     user-select: text;
     padding: 5px 5px 1px 10px;
