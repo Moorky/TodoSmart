@@ -18,7 +18,7 @@ function isUserCreator($id): bool
 
 function isUserAdmin(): bool
 {
-    if ($_SESSION["isAdmin"] === 1) {
+    if ($_SESSION["isAdmin"] === "1") {
         return true;
     }
 

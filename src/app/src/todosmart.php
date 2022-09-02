@@ -49,7 +49,7 @@ function createTodoElements(): void
                 </h4>
 
                 <h3>$title</h3>
-                <p style='padding-left: 15px'>$description</p>
+                <p>$description</p>
                 <small style='border: 10px white'><b>$category</b></small>
                 
                 <small style='float: right'>$dateCreated | $dateUpdated</small>
