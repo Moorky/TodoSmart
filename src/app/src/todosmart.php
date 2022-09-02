@@ -42,14 +42,14 @@ function createTodoElements(): void
                 </form>
                 <button name='editTodoBtn' value='$id' style='float: right'>...</button>
 
-                Title: $title <br>
-                Description: $description <br>
+                <h3>$title</h3>
+                <p>$description</p>
                 Status: $status <br>
                 Assigned To: $assignedTo <br>
                 Created By: $createdBy <br>
-                Date Created: $dateCreated <br>
-                Date Updated: $dateUpdated <br>
                 Category: $category
+                
+                <small style='float: right'>$dateCreated | $dateUpdated</small>
                 
                 <input type='hidden' id='$id,title' value='$title'>
                 <input type='hidden' id='$id,description' value='$description'>

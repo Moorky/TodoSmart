@@ -12,7 +12,7 @@ prepareController();
 ?>
 
 <?php view('header', ['title' => 'App - TodoSmart']) ?>
-    <link rel="stylesheet" href="../stylesheets/style.css">
+    <link rel="stylesheet" href="../../style/app/style.css">
 
     <div class="todoFrame">
 
