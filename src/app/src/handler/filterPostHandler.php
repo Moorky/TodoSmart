@@ -16,6 +16,10 @@ if (is_post_request() && isset($_POST['filterSubmit'])) {
 
     redirect_to('todosmart.php');
 
+} else if (is_post_request() && isset($_POST['filterResetSubmit'])) {
+    unset($_SESSION["sortKey"]);
+    unset($_SESSION["categoryName"]);
+
 } else if (is_get_request()) {
     [$inputs, $errors] = session_flash('inputs', 'errors');
 }

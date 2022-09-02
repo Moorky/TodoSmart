@@ -81,3 +81,16 @@ function fetchAllTodosByCategory($sortKey, $categoryName): array
 
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
+
+function fetchTodoById($id): array
+{
+    $sql = "SELECT *
+            FROM todos
+            WHERE id = :id";
+
+    $statement = db()->prepare($sql);
+    $statement->bindValue(":id", $id);
+    $statement->execute();
+
+    return $statement->fetch(PDO::FETCH_ASSOC);
+}

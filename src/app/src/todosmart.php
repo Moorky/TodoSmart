@@ -69,7 +69,11 @@ function createCategoryElements(): void
 
     foreach ($categoryList as $category) {
         $categoryName = $category["categoryName"];
-        echo "<option value='$categoryName'>$categoryName</option>";
+        if (isset($_SESSION["categoryName"]) && $_SESSION["categoryName"] === $categoryName) {
+            echo "<option value='$categoryName' selected>$categoryName</option>";
+        } else {
+            echo "<option value='$categoryName'>$categoryName</option>";
+        }
     }
 }
 
@@ -78,5 +82,19 @@ function createUserElements(): void
     foreach (getAllUsernames() as $user) {
         $username = $user["username"];
         echo "<option value='$username'>$username</option>";
+    }
+}
+
+function createSortByElements(): void
+{
+    $sortByElements = [["dateUpdated", "Date Updated"], ["dateCreated", "Date Created"], ["title", "Title"],
+        ["status", "Status"], ["assignedTo", "Assigned To"], ["createdBy", "Created By"], ["category", "Category"]];
+
+    foreach ($sortByElements as $element) {
+        if (isset($_SESSION["sortKey"]) && $_SESSION["sortKey"] === $element[0]) {
+            echo "<option value='$element[0]' selected>$element[1]</option>";
+        } else {
+            echo "<option value='$element[0]'>$element[1]</option>";
+        }
     }
 }

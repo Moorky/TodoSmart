@@ -5,13 +5,7 @@
                 <li>
                     <label for="sort">Sort by:</label>
                     <select name="sort" id="sort">
-                        <option value="dateUpdated">Date Updated</option>
-                        <option value="dateCreated">Date Created</option>
-                        <option value="title">Title</option>
-                        <option value="status">Status</option>
-                        <option value="assignedTo">Assigned To</option>
-                        <option value="createdBy">Created By</option>
-                        <option value="category">Category</option>
+                        <?php createSortByElements() ?>
                     </select>
                 </li>
                 <li>
@@ -22,6 +16,9 @@
                 </li>
                 <li>
                     <button type="submit" name="filterSubmit" id="filterSubmit">Apply</button>
+                </li>
+                <li>
+                    <button type="submit" name="filterResetSubmit" id="filterResetSubmit">Reset</button>
                 </li>
             </ul>
         </form>

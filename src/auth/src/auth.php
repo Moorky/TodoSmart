@@ -39,8 +39,8 @@ function login(string $username, string $password): bool
 
         // set username in the session
         $_SESSION['username'] = $user['username'];
-        $_SESSION['user_id'] = $user['id'];
-        $_SESSION['is_admin'] = $user['isAdmin'];
+        $_SESSION['userId'] = $user['id'];
+        $_SESSION['isAdmin'] = $user['isAdmin'];
 
 
         return true;
@@ -78,7 +78,7 @@ function current_user()
     return null;
 }
 
-function getAllUsernames()
+function getAllUsernames(): bool|array
 {
     $sql = 'SELECT username
             FROM users';

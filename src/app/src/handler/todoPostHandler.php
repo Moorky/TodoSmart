@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ . '/validationHandler.php';
+
 $errors = [];
 $inputs = [];
 
@@ -33,7 +35,7 @@ if (is_post_request() && isset($_POST['createTodoSubmit'])) {
         'Your todo has been created successfully.'
     );
 
-} else if (is_post_request() && isset($_POST['editTodoSubmit'])) {
+} else if (is_post_request() && isset($_POST['editTodoSubmit']) && validateUser($_POST["id"])) {
 
     [$inputs, $errors] = filter($_POST, $fields, $messages);
 
@@ -60,13 +62,16 @@ if (is_post_request() && isset($_POST['createTodoSubmit'])) {
 
     [$inputs, $errors] = filter($_POST, $fields, $messages);
 
-    global $controller;
+    if (validateUser($inputs['deleteTodoSubmit'])) {
 
-    $controller->deleteTodo($inputs['deleteTodoSubmit']);
-    redirect_with_message(
-        'todosmart.php',
-        'Your todo has been deleted successfully.'
-    );
+        global $controller;
+
+        $controller->deleteTodo($inputs['deleteTodoSubmit']);
+        redirect_with_message(
+            'todosmart.php',
+            'Your todo has been deleted successfully.'
+        );
+    }
 
 } else if (is_get_request()) {
     [$inputs, $errors] = session_flash('inputs', 'errors');
