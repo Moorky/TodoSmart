@@ -6,9 +6,10 @@ function fetchAllTodos($sortKey): array
 {
     $sql = "SELECT *
             FROM todos
-            ORDER BY $sortKey";
+            ORDER BY :sortKey";
 
     $statement = db()->prepare($sql);
+    $statement->bindValue(":sortKey", $sortKey);
     $statement->execute();
 
     return $statement->fetchAll(PDO::FETCH_ASSOC);
@@ -73,9 +74,10 @@ function fetchAllTodosByCategory($sortKey, $categoryName): array
     $sql = "SELECT *
             FROM todos
             WHERE category = :categoryName
-            ORDER BY $sortKey";
+            ORDER BY :sortKey";
 
     $statement = db()->prepare($sql);
+    $statement->bindValue(":sortKey", $sortKey);
     $statement->bindValue(":categoryName", $categoryName);
     $statement->execute();
 

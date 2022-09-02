@@ -3,6 +3,7 @@
 require_once __DIR__ . '/../../src/bootstrap.php';
 require_once __DIR__ . '/handler/databaseHandler.php';
 require_once __DIR__ . '/libs/TodoController.php';
+require_once __DIR__ . '/inc/svgVariables.php';
 
 $controller = new TodoController();
 
@@ -35,12 +36,16 @@ function createTodoElements(): void
         $dateUpdated = $todo->getDateUpdated();
         $category = $todo->getCategory();
 
+        global $deleteButtonSVG;
+        global $editButtonSVG;
+
         echo "<li>
                 <form action='todosmart.php' method='post'>
                     <button type='submit' name='deleteTodoSubmit' value='$id'
-                        style='float: right'>&times;</button>
+                        style='float: right;padding: 0;width: 40px;height: 40px'>$deleteButtonSVG</button>
                 </form>
-                <button name='editTodoBtn' value='$id' style='float: right'>...</button>
+                <button name='editTodoBtn' value='$id' 
+                style='float: right;padding: 0;width: 40px;height: 40px'>$editButtonSVG</button>
                 
                 <h4 style='float: right;padding-right: 5px;text-align: right'>
                     <small>To $assignedTo | From $createdBy</small>

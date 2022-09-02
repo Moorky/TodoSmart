@@ -19,10 +19,16 @@ li {
 }
 
 .todos li {
-    margin: auto;
     border: solid 3px white;
+    border-radius: 10px;
     user-select: text;
     padding: 5px 5px 1px 10px;
+    margin: auto auto 10px;
+    background: #232323;
+}
+
+.todos li:hover {
+    background: #3f3f3f;
 }
 
 /* The Modal (background) */
